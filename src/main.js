@@ -8,6 +8,9 @@ import router from './router'
 
 //引入懒加载组件
 import { lazyPlugin } from '@/directives'
+//引入全局组件
+import { componentPlugins } from '@/components'
+
 
 //引入初始化样式文件
 import '@/styles/common.scss'
@@ -17,6 +20,7 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(lazyPlugin)
+app.use(componentPlugins)
 app.mount('#app')
 
 

@@ -16,7 +16,7 @@ getHotList()
   <HomePanel title="新鲜好物" subtitle="新鲜出炉 品质保证">
       <ul class="goods-list">
         <li v-for="item in hotList" :key="item.id">
-          <RouterLink to="/">
+          <RouterLink :to="`/detail/${item.id}`">
             <img :src="item.picture" alt="">
             <p class="name">{{ item.name }}</p>
             <p class="desc">{{ item.desc }}</p>
