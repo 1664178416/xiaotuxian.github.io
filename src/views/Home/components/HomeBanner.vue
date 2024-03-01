@@ -4,6 +4,7 @@ import {ref, onMounted} from 'vue'
 
 // import { ref } from 'vue'
 
+
 const bannerList = ref([])
 
 const Banner= async ()=> {
