@@ -1,7 +1,7 @@
 <script setup>
-import { getCategoryAPI } from '@/apis/category';
-import { onMounted,ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+// import { getCategoryAPI } from '@/apis/category';
+// import { onMounted,ref, watch } from 'vue';
+// import { useRoute } from 'vue-router';
 // import { getBannerAPI } from '@/apis/home';
 import GoodsItem from '../Home/components/GoodsItem.vue';
 import { UseBanner } from './hooks/useBanner'
@@ -69,6 +69,7 @@ const {categoryData} = UseCategory()
     <h3>- {{ item.name }}-</h3>
   </div>
   <div class="body">
+    
     <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
   </div>
 </div>

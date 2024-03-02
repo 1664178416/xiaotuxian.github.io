@@ -4,8 +4,9 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import imageVue from '@/components/imageView/index.vue'
 import DetailHot from './components/DetailHot.vue'
-
-
+import { ElMessage } from 'element-plus'
+import {useCartStore} from '@/store/cartStore'
+const cartStore = useCartStore()
 const goods= ref({})
 const route = useRoute()
 const getGoods = async () => {
@@ -15,11 +16,39 @@ const getGoods = async () => {
 
 onMounted(() => getGoods())
 
+let skuObj={}
 //sku规格被操作时
 const skuChange = (sku) => {
   console.log(sku)
+  skuObj=sku
 }
 
+
+// count
+const count=ref(1)
+const countChange=(val)=>{
+  console.log(val)
+}
+
+//添加购物车
+const addCart = () => {
+  if(skuObj.skuId){
+    //规格已经选择
+    cartStore.addCart({
+     id:goods.value.id,
+     name:goods.value.name,
+     picture:goods.value.mainPictures[0],
+     price:goods.value.price,
+     count:count.value,
+     skuId:skuObj.skuId,
+     attrsText:skuObj.specsText,
+     selected:true
+    })
+  }else{
+    //规格未选择
+    ElMessage.warning('请选择规格')
+  }
+}
 </script>
 
 <template>
@@ -33,7 +62,7 @@ const skuChange = (sku) => {
           </el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories?.[0].id}` }">{{goods.categories?.[0].name}}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
+          <el-breadcrumb-item>{{goods.name}}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 商品信息 -->
@@ -93,10 +122,11 @@ const skuChange = (sku) => {
               <!-- sku组件 -->
               <XtxSku :goods="goods" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
-
+              <el-input-number v-model="count" @change="countChange" />
+                <!-- <span class="label">数量</span> -->
               <!-- 按钮组件 -->
               <div>
-                <el-button size="large" class="btn">
+                <el-button size="large" class="btn" @click="addCart">
                   加入购物车
                 </el-button>
               </div>
