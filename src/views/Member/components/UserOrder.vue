@@ -2,6 +2,7 @@
 import {getUserOrder} from '@/apis/order'
 import {onMounted, ref} from 'vue'
 // tab列表
+const loading = ref(true)
 const tabTypes = [
   { name: "all", label: "全部订单" },
   { name: "unpay", label: "待付款" },
@@ -21,9 +22,11 @@ const params = ref({
 })
 
 const getOrderList = async () => {
+  loading.value=true
   const res = await getUserOrder(params.value)
   orderList.value = res.result.items
   total.value=res.result.counts
+  loading.value=false
 }
 onMounted(()=>getOrderList())
 
@@ -57,7 +60,7 @@ const fomartPayState = (payState) => {
 
 <template>
   <div class="order-container">
-    <el-tabs @tab-change="tabChange">
+    <el-tabs v-loading="loading"  @tab-change="tabChange">
       <!-- tab切换 -->
       <el-tab-pane v-for="item in tabTypes" :key="item.name" :label="item.label" />
 
