@@ -4,6 +4,7 @@ import  {onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router'
 const orderInfo = ref({})
 const route = useRoute()
+console.log(route.query.orderId.slice(0,-2),'123456')
 const getOrderInfo = async () =>{  
   const res = await getOrderAPI(route.query.orderId)
   orderInfo.value = res.result
