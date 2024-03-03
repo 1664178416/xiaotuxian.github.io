@@ -1,6 +1,6 @@
 <script setup>
-import {getLikeListAPI} from '@/apis/user'
-import {useUserStore} from '@/store/user'
+import { getLikeListAPI } from '@/apis/user'
+import { useUserStore } from '@/store/user'
 import {onMounted, ref} from 'vue'
 import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 
