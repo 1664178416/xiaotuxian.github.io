@@ -10,3 +10,13 @@ export const loginAPI = ({account,password}) => {
     }
   })
 }
+
+//猜你喜欢
+export const getLikeListAPI = ({ limit = 4 }) => {
+  return request({
+    url:'/goods/relevant',
+    params: {
+      limit 
+    }
+  })
+}

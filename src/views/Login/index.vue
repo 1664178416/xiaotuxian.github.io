@@ -1,7 +1,7 @@
 <script setup>
 import  { ref } from 'vue'
 import { useRoute,useRouter } from 'vue-router'
-import { loginAPI } from '@/apis/user'
+// import { loginAPI } from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import {useUserStore} from '@/store/user'
@@ -86,7 +86,7 @@ const Login=()=>{
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
-              <el-button size="large" class="subBtn" @click="Login">点击登录</el-button>
+              <el-button size="large" class="subBtn" @click="Login" @keyup.enter="Login">点击登录</el-button>
             </el-form>
           </div>
         </div>

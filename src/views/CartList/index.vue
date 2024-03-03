@@ -61,7 +61,7 @@ const ChangeAll=(val)=>{
               </td>
               <td class="tc">
                 <p>
-                  <el-popconfirm title="确认删除吗?" confirm-button-text="确认" cancel-button-text="取消" @confirm="delCart(i)">
+                  <el-popconfirm title="确认删除吗?" confirm-button-text="确认" cancel-button-text="取消" @confirm="cartStore.delCart(i)">
                     <template #reference>
                       <a href="javascript:;">删除</a>
                     </template>
@@ -89,7 +89,7 @@ const ChangeAll=(val)=>{
           <span class="red">¥ {{(cartStore.SelectPrice).toFixed(2)}} </span>
         </div>
         <div class="total">
-          <el-button size="large" type="primary" >下单结算</el-button>
+          <el-button size="large" type="primary"  @click="$router.push('/checkout')">下单结算</el-button>
         </div>
       </div>
     </div>
