@@ -19,6 +19,9 @@ onMounted(() => {
   <LayoutFixed />
   <LayoutNav />
   <LayoutHeader />
+  <!-- tianjiakey，破坏复用机制，强制销毁重建 -->
+  <!-- 或者可以采取watch监听 -->
+  <!-- <RouterView :key="$route.fullPath"></RouterView> -->
   <RouterView />
   <LayoutFooter />
 </template>

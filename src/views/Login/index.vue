@@ -1,6 +1,6 @@
 <script setup>
 import  { ref } from 'vue'
-import { useRoute,useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 // import { loginAPI } from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
@@ -53,7 +53,7 @@ const Login=()=>{
 
 
 <template>
-  <div>
+  <div class="all">
     <header class="login-header">
       <div class="container m-top-20">
         <h1 class="logo">
@@ -111,6 +111,9 @@ const Login=()=>{
 </template>
 
 <style scoped lang='scss'>
+.all{
+  overflow: hidden;
+}
 .login-header {
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
@@ -193,8 +196,9 @@ const Login=()=>{
 
 .login-footer {
   padding: 30px 0 50px;
-  background: #fff;
-
+  background:#fff;
+  height: 310px;
+  
   p {
     text-align: center;
     color: #999;
