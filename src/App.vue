@@ -4,7 +4,6 @@
 
 <template>
  <RouterView></RouterView>
- <div class="test">test</div>
 </template>
 
 <style scoped lang="scss">

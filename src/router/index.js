@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
 import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
-import Home from '@/views/Home/index.vue'
+// import Home from '@/views/Home/index.vue'
+//组件异步加载
+const Home = ()=>import('@/views/Home/index.vue')
 import Category from '@/views/Category/index.vue'
 import SubCategory from '@/views/SubCategory/index.vue'
 import Detail from '@/views/Detail/index.vue'
@@ -34,7 +36,7 @@ const router = createRouter({
         },
         {
           path:'/category/sub/:id',
-          component:SubCategory,
+          component:()=>import('@/views/SubCategory/index.vue'),//动态加载组件
         },
         {
           path:'/detail/:id',
