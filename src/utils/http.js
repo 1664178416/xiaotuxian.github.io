@@ -17,7 +17,7 @@ httpInstance.interceptors.request.use(config => {
   if(token){
     config.headers.Authorization = `Bearer ${token}`
   }
-  return config
+  return config;
 }, e => Promise.reject(e))
 
 // axios响应式拦截器
