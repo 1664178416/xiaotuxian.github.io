@@ -17,8 +17,8 @@ import UserOrder from '@/views/Member/components/UserOrder.vue'
 
 
 const router = createRouter({
-  // history: createWebHistory(import.meta.env.BASE_URL),
-  history: createWebHashHistory(),//使用哈希模式打包
+   history: createWebHistory(import.meta.env.BASE_URL),
+  //history: createWebHashHistory(),//使用哈希模式打包
   //path和component对应关系的位置
   routes: [
     
